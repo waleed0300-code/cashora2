@@ -1,0 +1,20 @@
+# Cashora htaccess Configuration
+# InfinityFree & Core PHP Compatible
+
+RewriteEngine On
+
+# Stop directory browsing
+Options -Indexes
+
+# Protect db configurations and key classes
+<FilesMatch "^\.(git|env)|(schema\.sql|db\.php|User\.php|Package\.php|Deposit\.php|Withdrawal\.php|Notification\.php|Transaction\.php|Settings\.php|Contact\.php)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Custom Error Pages
+ErrorDocument 404 /index.php
+
+# Redirect www to non-www or force https (Optional, uncomment on live)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
